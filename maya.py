@@ -611,7 +611,7 @@ async def roles(ctx): #When you get kicked and have no roles, the base User role
 # 8ball
 @bot.command()
 async def ball(ctx, *, question):
-    if ctx.author.name == 'Luppiter':
+    if ctx.author.name == 'botTest':
       respuestas = [
         "It is certain.",
         "It is decidedly so.",
