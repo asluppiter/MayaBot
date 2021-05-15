@@ -26,11 +26,38 @@ async def help(ctx):
     embed.set_thumbnail(url="https://i.imgur.com/bNQWzHY.jpg")
     embed.add_field(name="roulette", value="Play Russian Roulette", inline=False)
     embed.add_field(name="roles", value="To get back your roles if you lost Russian Roulette", inline=False)
-    embed.add_field(name="ball", value="8Ball", inline=False)
+    embed.add_field(name="ball", value="Play 8Ball", inline=False)
     embed.add_field(name="old", value="Random old message from lecture-hall", inline=False)
     embed.add_field(name="kyoufyme", value="Get monochromed", inline=False)
     embed.add_field(name="kyoufyou", value="Monochrome a url", inline=False)
+    embed.add_field(name="unkyou", value="Un-monochrome a url", inline=False)
+    embed.add_field(name="neko", value="Random neko girl", inline=False)
+    embed.add_field(name="quote", value="Random anime quote", inline=False)
     await ctx.send(embed=embed)
+
+# Mecometer
+@bot.command()
+async def sus(ctx, *, user):
+    if str(ctx.channel.id) == "826966640100376587":
+      r = random.randint(1, 100)
+      susness = r / 1.17
+      gifs = ""
+      if susness < 10:
+        gifs = "https://cdn.discordapp.com/attachments/822977852236234807/834453223544586250/image0.gif"
+      elif susness > 10 and susness < 30:
+        gifs = "https://cdn.discordapp.com/attachments/822977852236234807/834453187939139624/image0.gif"
+      elif susness > 30 and susness < 50:
+        gifs = "https://cdn.discordapp.com/attachments/822977852236234807/834453203743146094/image0.gif"
+      elif susness > 50 and susness < 75:
+        gifs = "https://cdn.discordapp.com/attachments/822977852236234807/834453250622619678/image0.gif"
+      elif susness > 75:
+        gifs = "https://cdn.discordapp.com/attachments/822977852236234807/834453155285565511/image0.gif"
+      dumb = f"**{user}** is **{susness:.2f}**% sus"
+      embed = discord.Embed(title="", description=dumb, color=0xa0200e)
+      embed.set_image(url=gifs)
+      await ctx.send(embed=embed)
+    else:
+      await ctx.reply("Use out-of-context plz")
 
 #CTX = context (the message, channel, author, etchttps://discordpy.readthedocs.io/en/latest/index.html)
 @bot.command()
@@ -77,6 +104,399 @@ async def kyoufyou(ctx,*,idiot):
   img.save('greyscale.png')
   await ctx.reply(file=discord.File('greyscale.png'))
   
+@bot.command()
+async def quote(ctx):
+
+  url = "https://animechan.vercel.app/api/random"
+  response = requests.get(url)
+  aniQoute = response.json()
+  print(response.text)
+  anime = aniQoute["anime"]
+  character = aniQoute["character"]
+  quote = aniQoute["quote"]
+  embed=discord.Embed(title=anime, url="https://luppiter.xyz", description=character, color=0xa0200e)
+  embed.set_author(name="Random anime quote")
+  embed.add_field(name="Qoute", value=quote, inline=False)
+  await ctx.reply(embed=embed)
+  
+@bot.command()
+async def waifu(ctx):
+
+  url = "https://api.waifu.pics/sfw/waifu"
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random waifu  image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+
+@bot.command()
+async def neko(ctx):
+
+  url = "https://api.waifu.pics/sfw/neko"
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random neko   image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+  
+@bot.command()
+async def shinobu(ctx):
+
+  url = "https://api.waifu.pics/sfw/shinobu"
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random shinobu  image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+
+@bot.command()
+async def megumin(ctx):
+
+  url = "https://api.waifu.pics/sfw/megumin"
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random megumin image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+  
+@bot.command()
+async def bully(ctx):
+
+  url = "https://api.waifu.pics/sfw/bully"
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random bully  image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+  
+@bot.command()
+async def cuddle(ctx):
+
+  url = "https://api.waifu.pics/sfw/cuddle"
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random cuddle  image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+  
+@bot.command()
+async def awoo(ctx):
+
+  url = "https://api.waifu.pics/sfw/awoo"
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random awoo  image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+  
+@bot.command()
+async def cry(ctx):
+
+  url = "https://api.waifu.pics/sfw/cry"
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random cry image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+  
+@bot.command()
+async def kiss(ctx):
+
+  url = "https://api.waifu.pics/sfw/kiss"
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random kiss  image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+
+@bot.command()
+async def hug(ctx):
+
+  url = "https://api.waifu.pics/sfw/hug"
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random hug image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+  
+@bot.command()
+async def lick(ctx):
+
+  url = "https://api.waifu.pics/sfw/lick"
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random lick  image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+  
+@bot.command()
+async def pat(ctx):
+
+  url = "https://api.waifu.pics/sfw/pat "
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random pat  image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+  
+@bot.command()
+async def smug(ctx):
+
+  url = "https://api.waifu.pics/sfw/smug"
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random smug  image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+  
+@bot.command()
+async def bonk(ctx):
+
+  url = "https://api.waifu.pics/sfw/bonk "
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random bonk  image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+  
+@bot.command()
+async def yeet(ctx):
+
+  url = "https://api.waifu.pics/sfw/yeet"
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random yeet  image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+  
+@bot.command()
+async def blush(ctx):
+
+  url = "https://api.waifu.pics/sfw/blush"
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random blush  image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+  
+@bot.command()
+async def smile(ctx):
+
+  url = "https://api.waifu.pics/sfw/smile"
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random smile  image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+  
+@bot.command()
+async def wave(ctx):
+
+  url = "https://api.waifu.pics/sfw/wave"
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random wave  image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+  
+@bot.command()
+async def handhold(ctx):
+
+  url = "https://api.waifu.pics/sfw/handhold"
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random handhold  image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+  
+@bot.command()
+async def nom(ctx):
+
+  url = "https://api.waifu.pics/sfw/nom"
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random nom  image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+
+@bot.command()
+async def bite(ctx):
+
+  url = "https://api.waifu.pics/sfw/bite"
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random bite  image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+  
+@bot.command()
+async def glomp(ctx):
+
+  url = "https://api.waifu.pics/sfw/glomp"
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random glomp  image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+  
+@bot.command()
+async def slap(ctx):
+
+  url = "https://api.waifu.pics/sfw/slap"
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random slap  image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+  
+@bot.command()
+async def kill(ctx):
+
+  url = "https://api.waifu.pics/sfw/kill"
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random kill  image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+  
+@bot.command()
+async def happy(ctx):
+
+  url = "https://api.waifu.pics/sfw/happy"
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random happy  image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+  
+@bot.command()
+async def wink(ctx):
+
+  url = "https://api.waifu.pics/sfw/wink"
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random wink  image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+  
+@bot.command()
+async def poke(ctx):
+
+  url = "https://api.waifu.pics/sfw/poke"
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random poke  image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+  
+@bot.command()
+async def dance(ctx):
+
+  url = "https://api.waifu.pics/sfw/dance"
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random dance  image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+  
+@bot.command()
+async def cringe(ctx):
+
+  url = "https://api.waifu.pics/sfw/cringe"
+  response = requests.get(url)
+  nekoJSON = response.json()
+  print(response.text)
+  
+  embed=discord.Embed(title="Maya", url="https://luppiter.xyz", description="Maya", color=0xa0200e)
+  embed.set_author(name="Random cringe  image")
+  embed.set_image(url=nekoJSON["url"])
+  await ctx.reply(embed=embed)
+
+
 
 @bot.command()
 async def unkyou(ctx,*,idiot):
@@ -191,7 +611,22 @@ async def roles(ctx): #When you get kicked and have no roles, the base User role
 # 8ball
 @bot.command()
 async def ball(ctx, *, question):
-    respuestas = [
+    if ctx.author.name == 'Luppiter':
+      respuestas = [
+        "It is certain.",
+        "It is decidedly so.",
+        "Without a doubt.",
+        "Yes - definitely.",
+        "You may rely on it.",
+        "As I see it, yes.",
+        "Most likely.",
+        "Outlook good.",
+        "Yes.",
+        "Signs point to yes.",
+        "Reply hazy, try again."
+      ]
+    else:
+      respuestas = [
         "It is certain.",
         "It is decidedly so.",
         "Without a doubt.",
@@ -213,7 +648,7 @@ async def ball(ctx, *, question):
         "Outlook not so good.",
         "Very doubtful.",
         "no"
-    ]
+      ]
     res = random.choice(respuestas)
     desc = f"**Question**: {question}\n**Answer**: {res}"
     embed = discord.Embed(title=":8ball:", description=desc, color=0xa0200e)
@@ -228,5 +663,5 @@ async def on_ready():
     print("Iniciando Bot a las: " + current_time)
     print("Logged in as: {}".format(bot.user.name))
 
-bot.run("botTokenFromDiscordDevelopersSite")
+bot.run("token")
 
